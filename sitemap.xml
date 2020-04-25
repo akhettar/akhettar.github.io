@@ -3,68 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://akhettar.github.io/post/creating-a-new-theme/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
+    <loc>https://cirta.dev/</loc>
+    <lastmod>2020-04-25T19:05:51+03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://akhettar.github.io/post/migrate-from-jekyll/</loc>
-    <lastmod>2014-03-10T00:00:00+00:00</lastmod>
+    <loc>https://cirta.dev/tags/integration-test/</loc>
+    <lastmod>2020-04-25T19:05:51+03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://akhettar.github.io/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
+    <loc>https://cirta.dev/post/</loc>
+    <lastmod>2020-04-25T19:05:51+03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://akhettar.github.io/post/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
+    <loc>https://cirta.dev/post/docker-db/</loc>
+    <lastmod>2020-04-25T19:05:51+03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://akhettar.github.io/post/goisforlovers/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://akhettar.github.io/tags/development/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://akhettar.github.io/post/hugoisforlovers/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://akhettar.github.io/tags/go/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://akhettar.github.io/tags/golang/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://akhettar.github.io/tags/hugo/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://akhettar.github.io/tags/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://akhettar.github.io/tags/templates/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://akhettar.github.io/tags/themes/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+    <loc>https://cirta.dev/tags/</loc>
+    <lastmod>2020-04-25T19:05:51+03:00</lastmod>
   </url>
   
 </urlset>
