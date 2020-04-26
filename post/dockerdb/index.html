@@ -107,13 +107,38 @@
       <h2 id="introduction">Introduction</h2>
 <p>No body can underestimate the value of running integration tests in your local environment before pushing the changes to a continuous integration pipeline. We often write backend services that connects to various databases. In this brief post
 I am going to show you how to write an integration test which requires connection to <code>mongodb</code> or a <code>postgres</code> database.</p>
-<p>I have written a <a href="https://github.com/akhettar/docker-db">Go library</a> that can be embedded in your integration test and will ensure the followings:</p>
+<p>I have written a <a href="https://github.com/akhettar/docker-db">Go library</a> that can be embedded in your integration test and will ensure the followings</p>
 <ol>
 <li>Run the desired DB container.</li>
 <li>Run the test suite.</li>
 <li>Destroy the container, i.e the container is stopped, deleted along the volume it has created.</li>
 </ol>
 <h2 id="running-mongo-db-container">Running Mongo DB container</h2>
+<p>You can simply initiate mongo container as part of your test suite by including the below snippet in your integration test</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">
+<span style="color:#f92672">import</span> (
+	<span style="color:#e6db74">&#34;context&#34;</span>
+	<span style="color:#e6db74">&#34;fmt&#34;</span>
+	<span style="color:#a6e22e">dockerdb</span> <span style="color:#e6db74">&#34;github.com/akhettar/docker-db&#34;</span>
+	<span style="color:#e6db74">&#34;testing&#34;</span>
+	<span style="color:#e6db74">&#34;go.mongodb.org/mongo-driver/mongo&#34;</span>
+	<span style="color:#e6db74">&#34;go.mongodb.org/mongo-driver/mongo/options&#34;</span>
+	
+)
+
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Test_testmongo</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
+
+	<span style="color:#75715e">// Start mongo container
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">c</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">dockerdb</span>.<span style="color:#a6e22e">StartMongoContainer</span>()
+
+	<span style="color:#a6e22e">uri</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;mongodb://%s:%d&#34;</span>, <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Host</span>(), <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Port</span>())
+	<span style="color:#a6e22e">clientOptions</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">Client</span>().<span style="color:#a6e22e">ApplyURI</span>(<span style="color:#a6e22e">uri</span>)
+
+	<span style="color:#75715e">// instantiate mongo client
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">client</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">mongo</span>.<span style="color:#a6e22e">Connect</span>(<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">TODO</span>(), <span style="color:#a6e22e">clientOptions</span>)
+	
+}
+</code></pre></div><p>That is it! Below the code snippet shows you how to include a test fixture to start mongo container and run the full test suite.</p>
 <p><code>Integration test snipppet</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestPublishAppStatus_WithInvalidAppPlatformReturnBadRequestResponse</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
 
@@ -204,7 +229,9 @@ I am going to show you how to write an integration test which requires connectio
 }
 
 </code></pre></div><h2 id="running-postgres-container">Running Postgres Container</h2>
-<p>The postgres container is sourced from <a href="https://hub.docker.com/_/postgres">docker hub</a></p>
+<p>The postgres container is sourced from <a href="https://hub.docker.com/_/postgres">docker hub</a>. The library supports schema initialisation prior to running the postgres container by calling
+<code>StartPostgresContainerWithInitialisationScript(dbname, shema_file)</code>. Where <code>dbname</code> is the database name and the <code>shema_file</code> is the sql file with relative path to the root package.</p>
+<p>Here is a full set up of an integration test and test fixture.</p>
 <p><code>Integration test</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Entries</span> <span style="color:#66d9ef">struct</span> {
 	<span style="color:#a6e22e">Article</span> <span style="color:#66d9ef">string</span>
@@ -278,27 +305,29 @@ I am going to show you how to write an integration test which requires connectio
 	<span style="color:#e6db74">&#34;fmt&#34;</span>
 	<span style="color:#e6db74">&#34;log&#34;</span>
 	<span style="color:#e6db74">&#34;os&#34;</span>
-	<span style="color:#e6db74">&#34;path/filepath&#34;</span>
 	<span style="color:#e6db74">&#34;testing&#34;</span>
+    <span style="color:#a6e22e">dockerdb</span> <span style="color:#e6db74">&#34;github.com/akhettar/docker-db&#34;</span>
 )
 
-<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">db</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">sql</span>.<span style="color:#a6e22e">DB</span>
+<span style="color:#66d9ef">var</span> (
+	<span style="color:#a6e22e">DB</span>  <span style="color:#f92672">*</span><span style="color:#a6e22e">sql</span>.<span style="color:#a6e22e">DB</span>
+	<span style="color:#a6e22e">err</span> <span style="color:#66d9ef">error</span>
+)
 
 <span style="color:#75715e">// Test Fixture start the DB container and run the test suite
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestMain</span>(<span style="color:#a6e22e">m</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">M</span>) {
 
-	<span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">Parse</span>()
-
-	<span style="color:#a6e22e">schema</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">filepath</span>.<span style="color:#a6e22e">Abs</span>(<span style="color:#e6db74">&#34;initialise_db.sql&#34;</span>)
-	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
-		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#e6db74">&#34;Running postgres without the initialisation script&#34;</span>)
-	}
-
 	<span style="color:#75715e">// Start container
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">c</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">StartPostgresContainerWithInitialisationScript</span>(<span style="color:#e6db74">&#34;test&#34;</span>, <span style="color:#a6e22e">schema</span>)
-	<span style="color:#a6e22e">connStr</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;postgres://%s:%s@%s/test?sslmode=disable&#34;</span>, <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">userName</span>, <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">password</span>, <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">host</span>)
-	<span style="color:#a6e22e">db</span>, <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">sql</span>.<span style="color:#a6e22e">Open</span>(<span style="color:#e6db74">&#34;postgres&#34;</span>, <span style="color:#a6e22e">connStr</span>)
-	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">db</span>.<span style="color:#a6e22e">Close</span>()
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">c</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">dockerdb</span>.<span style="color:#a6e22e">StartPostgresContainerWithInitialisationScript</span>(<span style="color:#e6db74">&#34;test&#34;</span>, <span style="color:#e6db74">&#34;tests/initialise_db.sql&#34;</span>)
+
+	<span style="color:#75715e">// open connection
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">connStr</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;postgres://%s:%s@%s/test?sslmode=disable&#34;</span>, <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">userName</span>, <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">password</span>, <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">host</span>)
+	<span style="color:#a6e22e">DB</span>, <span style="color:#a6e22e">err</span> = <span style="color:#a6e22e">sql</span>.<span style="color:#a6e22e">Open</span>(<span style="color:#e6db74">&#34;postgres&#34;</span>, <span style="color:#a6e22e">connStr</span>)
+
+	<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">err</span> <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nil</span> {
+		<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Fatal</span>(<span style="color:#e6db74">&#34;failed to open a connection&#34;</span>)
+	}
+	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">DB</span>.<span style="color:#a6e22e">Close</span>()
 
 	<span style="color:#75715e">// Run the test suite
 </span><span style="color:#75715e"></span>	<span style="color:#a6e22e">retCode</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">Run</span>()
