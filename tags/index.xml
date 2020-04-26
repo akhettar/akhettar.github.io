@@ -2,76 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Ayache Khettar</title>
-    <link>https://cirta.dev/tags/</link>
+    <link>https://akhettar.github.io/tags/</link>
     <description>Recent content in Tags on Ayache Khettar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/ribice&#34;&gt;Emir Ribic&lt;/a&gt; 2017</copyright>
     <lastBuildDate>Sat, 25 Apr 2020 19:05:51 +0300</lastBuildDate>
     
-	<atom:link href="https://cirta.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://akhettar.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>integration test</title>
-      <link>https://cirta.dev/tags/integration-test/</link>
+      <link>https://akhettar.github.io/tags/integration-test/</link>
       <pubDate>Sat, 25 Apr 2020 19:05:51 +0300</pubDate>
       
-      <guid>https://cirta.dev/tags/integration-test/</guid>
+      <guid>https://akhettar.github.io/tags/integration-test/</guid>
       <description></description>
     </item>
     
     <item>
       <title>mongodb</title>
-      <link>https://cirta.dev/tags/mongodb/</link>
+      <link>https://akhettar.github.io/tags/mongodb/</link>
       <pubDate>Sat, 25 Apr 2020 19:05:51 +0300</pubDate>
       
-      <guid>https://cirta.dev/tags/mongodb/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>development</title>
-      <link>https://cirta.dev/tags/development/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://cirta.dev/tags/development/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>go</title>
-      <link>https://cirta.dev/tags/go/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://cirta.dev/tags/go/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>golang</title>
-      <link>https://cirta.dev/tags/golang/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://cirta.dev/tags/golang/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>templates</title>
-      <link>https://cirta.dev/tags/templates/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://cirta.dev/tags/templates/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>themes</title>
-      <link>https://cirta.dev/tags/themes/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://cirta.dev/tags/themes/</guid>
+      <guid>https://akhettar.github.io/tags/mongodb/</guid>
       <description></description>
     </item>
     
