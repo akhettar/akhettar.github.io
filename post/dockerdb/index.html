@@ -8,19 +8,19 @@
 
 <meta property='og:title' content='Running integration tests against databases - Ayache Khettar'>
 <meta property='og:description' content='Integration test'>
-<meta property='og:url' content='https://akhettar.github.io/post/dockerdb/'>
+<meta property='og:url' content='https://www.cirta.dev/post/dockerdb/'>
 <meta property='og:site_name' content='Ayache Khettar'>
 <meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/9dc01e9dc52f400f0e635aed3ec85a72?s=256'><meta property='article:section' content='Post'><meta property='article:tag' content='integration test'><meta property='article:tag' content='mongodb'><meta property='article:published_time' content='2020-04-25T19:05:51&#43;03:00'/><meta property='article:modified_time' content='2020-04-25T19:05:51&#43;03:00'/><meta name='twitter:card' content='summary'><meta name='twitter:site' content='@AyacheKhettar'><meta name='twitter:creator' content='@AyacheKhettar'>
 
 
-<link href="https://akhettar.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Ayache Khettar" />
+<link href="https://www.cirta.dev/index.xml" rel="alternate" type="application/rss+xml" title="Ayache Khettar" />
 
-<link rel="stylesheet" href="/css/style.css"/><link rel='stylesheet' href='https://akhettar.github.io/css/custom.css'><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/style.css"/><link rel='stylesheet' href='https://www.cirta.dev/css/custom.css'><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-<link rel="canonical" href="https://akhettar.github.io/post/dockerdb/">
+<link rel="canonical" href="https://www.cirta.dev/post/dockerdb/">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
 </head>
@@ -29,7 +29,7 @@
   <div class="container">
     <nav id="nav-main" class="nav">
       <div id="nav-name" class="nav-left">
-        <a id="nav-anchor" class="nav-item" href="https://akhettar.github.io">
+        <a id="nav-anchor" class="nav-item" href="https://www.cirta.dev">
           <h1 id="nav-heading" class="title is-4">Ayache Khettar</h1>
         </a>
       </div>
@@ -105,6 +105,7 @@
     
     <div class="content">
       <h2 id="introduction">Introduction</h2>
+<p><img src="/pushing-cart.png" alt="gopher"></p>
 <p>No body can underestimate the value of running integration tests in your local environment before pushing the changes to a continuous integration pipeline. We often write backend services that connects to various databases. In this brief post
 I am going to show you how to write an integration test which requires connection to <code>mongodb</code> or a <code>postgres</code> database.</p>
 <p>I have written a <a href="https://github.com/akhettar/docker-db">Go library</a> that can be embedded in your integration test and will ensure the followings</p>
@@ -138,7 +139,8 @@ I am going to show you how to write an integration test which requires connectio
 </span><span style="color:#75715e"></span>	<span style="color:#a6e22e">client</span>, <span style="color:#a6e22e">err</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">mongo</span>.<span style="color:#a6e22e">Connect</span>(<span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">TODO</span>(), <span style="color:#a6e22e">clientOptions</span>)
 	
 }
-</code></pre></div><p>That is it! Below the code snippet shows you how to include a test fixture to start mongo container and run the full test suite.</p>
+</code></pre></div><p>That is it! Below the code snippet showing how to include a test fixture to start mongo container and run the full test suite. It consists of two files: One that include
+your test suite and the other one is a test fixture - see below.</p>
 <p><code>Integration test snipppet</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestPublishAppStatus_WithInvalidAppPlatformReturnBadRequestResponse</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
 
@@ -168,7 +170,8 @@ I am going to show you how to write an integration test which requires connectio
 		}
 	}
 }
-</code></pre></div><p>In the same package include the test fixture named: <code>init_test.go</code></p>
+</code></pre></div><p><code>Test fixture</code></p>
+<p>In the same package include the test fixture named: <code>init_test.go</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">import</span> (
 	<span style="color:#e6db74">&#34;github.com/akhettar/app-features-manager/repository&#34;</span>
 	<span style="color:#e6db74">&#34;context&#34;</span>
@@ -227,10 +230,9 @@ I am going to show you how to write an integration test which requires connectio
 	<span style="color:#75715e">// call with result of m.Run()
 </span><span style="color:#75715e"></span>	<span style="color:#a6e22e">os</span>.<span style="color:#a6e22e">Exit</span>(<span style="color:#a6e22e">retCode</span>)
 }
-
 </code></pre></div><h2 id="running-postgres-container">Running Postgres Container</h2>
-<p>The postgres container is sourced from <a href="https://hub.docker.com/_/postgres">docker hub</a>. The library supports schema initialisation prior to running the postgres container by calling
-<code>StartPostgresContainerWithInitialisationScript(dbname, shema_file)</code>. Where <code>dbname</code> is the database name and the <code>shema_file</code> is the sql file with relative path to the root package.</p>
+<p>The postgres container is sourced from <a href="https://hub.docker.com/_/postgres">docker hub</a>. The library supports schema initialisation prior to running the postgres container.</p>
+<p><code>StartPostgresContainerWithInitialisationScript(dbname, shema_file)</code>. Where <code>dbname</code> is the database name and the <code>shema_file</code> is the SQL initialisation file path (relative to the package)</p>
 <p>Here is a full set up of an integration test and test fixture.</p>
 <p><code>Integration test</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">type</span> <span style="color:#a6e22e">Entries</span> <span style="color:#66d9ef">struct</span> {
@@ -296,7 +298,8 @@ I am going to show you how to write an integration test which requires connectio
 	}
 
 }
-</code></pre></div><p>And the test fixture that runs the above test suite should be located in the same package and named: <code>init_test.go</code></p>
+</code></pre></div><p><code>Test fixture</code></p>
+<p>The test fixture that runs the above test suite should be located in the same package and named: <code>init_test.go</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">dockertest</span>
 
 <span style="color:#f92672">import</span> (
