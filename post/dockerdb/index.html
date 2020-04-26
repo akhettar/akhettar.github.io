@@ -119,7 +119,7 @@
 <span style="color:#f92672">import</span> (
 	<span style="color:#e6db74">&#34;context&#34;</span>
 	<span style="color:#e6db74">&#34;fmt&#34;</span>
-	<span style="color:#a6e22e">dockerdb</span> <span style="color:#e6db74">&#34;github.com/akhettar/docker-db&#34;</span>
+	<span style="color:#e6db74">&#34;github.com/akhettar/docker-db&#34;</span>
 	<span style="color:#e6db74">&#34;testing&#34;</span>
 	<span style="color:#e6db74">&#34;go.mongodb.org/mongo-driver/mongo&#34;</span>
 	<span style="color:#e6db74">&#34;go.mongodb.org/mongo-driver/mongo/options&#34;</span>
@@ -129,7 +129,7 @@
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">Test_testmongo</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
 
 	<span style="color:#75715e">// Start mongo container
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">c</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">dockerdb</span>.<span style="color:#a6e22e">StartMongoContainer</span>()
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">c</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">dbtest</span>.<span style="color:#a6e22e">StartMongoContainer</span>()
 
 	<span style="color:#a6e22e">uri</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;mongodb://%s:%d&#34;</span>, <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Host</span>(), <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">Port</span>())
 	<span style="color:#a6e22e">clientOptions</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">Client</span>().<span style="color:#a6e22e">ApplyURI</span>(<span style="color:#a6e22e">uri</span>)
@@ -175,7 +175,7 @@ your test suite and the other one is a test fixture - see below.</p>
 	<span style="color:#e6db74">&#34;github.com/akhettar/app-features-manager/repository&#34;</span>
 	<span style="color:#e6db74">&#34;context&#34;</span>
 	<span style="color:#e6db74">&#34;flag&#34;</span>
-	<span style="color:#a6e22e">dockertdb</span> <span style="color:#e6db74">&#34;github.com/akhettar/docker-db&#34;</span>
+	<span style="color:#e6db74">&#34;github.com/akhettar/docker-db&#34;</span>
 	<span style="color:#e6db74">&#34;go.mongodb.org/mongo-driver/mongo&#34;</span>
 	<span style="color:#e6db74">&#34;go.mongodb.org/mongo-driver/mongo/options&#34;</span>
 	<span style="color:#e6db74">&#34;log&#34;</span>
@@ -200,7 +200,7 @@ your test suite and the other one is a test fixture - see below.</p>
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestMain</span>(<span style="color:#a6e22e">m</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">M</span>) {
 
 	<span style="color:#a6e22e">flag</span>.<span style="color:#a6e22e">Parse</span>()
-	<span style="color:#a6e22e">container</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">dockertest</span>.<span style="color:#a6e22e">StartMongoContainer</span>()
+	<span style="color:#a6e22e">container</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">dbtest</span>.<span style="color:#a6e22e">StartMongoContainer</span>()
 	<span style="color:#a6e22e">log</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;running mongo with Ip %s&#34;</span>, <span style="color:#a6e22e">container</span>.<span style="color:#a6e22e">Host</span>())
 
 	<span style="color:#a6e22e">uri</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;mongodb://%s:%d&#34;</span>, <span style="color:#a6e22e">container</span>.<span style="color:#a6e22e">Host</span>(), <span style="color:#a6e22e">container</span>.<span style="color:#a6e22e">Port</span>())
@@ -308,7 +308,7 @@ your test suite and the other one is a test fixture - see below.</p>
 	<span style="color:#e6db74">&#34;log&#34;</span>
 	<span style="color:#e6db74">&#34;os&#34;</span>
 	<span style="color:#e6db74">&#34;testing&#34;</span>
-    <span style="color:#a6e22e">dockerdb</span> <span style="color:#e6db74">&#34;github.com/akhettar/docker-db&#34;</span>
+    <span style="color:#e6db74">&#34;github.com/akhettar/docker-db&#34;</span>
 )
 
 <span style="color:#66d9ef">var</span> (
@@ -320,7 +320,7 @@ your test suite and the other one is a test fixture - see below.</p>
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestMain</span>(<span style="color:#a6e22e">m</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">M</span>) {
 
 	<span style="color:#75715e">// Start container
-</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">c</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">dockerdb</span>.<span style="color:#a6e22e">StartPostgresContainerWithInitialisationScript</span>(<span style="color:#e6db74">&#34;test&#34;</span>, <span style="color:#e6db74">&#34;tests/initialise_db.sql&#34;</span>)
+</span><span style="color:#75715e"></span>	<span style="color:#a6e22e">c</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">dbtest</span>.<span style="color:#a6e22e">StartPostgresContainerWithInitialisationScript</span>(<span style="color:#e6db74">&#34;test&#34;</span>, <span style="color:#e6db74">&#34;tests/initialise_db.sql&#34;</span>)
 
 	<span style="color:#75715e">// open connection
 </span><span style="color:#75715e"></span>	<span style="color:#a6e22e">connStr</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Sprintf</span>(<span style="color:#e6db74">&#34;postgres://%s:%s@%s/test?sslmode=disable&#34;</span>, <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">userName</span>, <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">password</span>, <span style="color:#a6e22e">c</span>.<span style="color:#a6e22e">host</span>)
