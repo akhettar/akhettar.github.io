@@ -18,8 +18,9 @@
       <pubDate>Sat, 25 Apr 2020 19:05:51 +0300</pubDate>
       
       <guid>https://www.cirta.dev/post/dockerdb/</guid>
-      <description>Introduction No body can underestimate the value of running integration tests in your local environment before pushing the changes to a continuous integration pipeline. We often write backend services that connects to various databases. In this brief post I am going to show you how to write an integration test which requires connection to mongodb or a postgres database.
-I have written a Go library that can be embedded in your integration test and will ensure the followings</description>
+      <description>Introduction I am going to show you how to write an integration test which requires connection to mongodb or a postgres database.
+I have written a Go library that can be embedded in your integration test and will ensure the followings
+ Run the desired DB container. Run the test suite. Destroy the container, i.e the container is stopped, deleted along the volume it has created.  Running Mongo DB container You can simply initiate mongo container as part of your test suite by including the below snippet in your integration test</description>
     </item>
     
   </channel>
