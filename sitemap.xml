@@ -13,12 +13,17 @@
   </url>
   
   <url>
+    <loc>https://cirta.dev/tags/mongodb/</loc>
+    <lastmod>2020-04-25T19:05:51+03:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://cirta.dev/post/</loc>
     <lastmod>2020-04-25T19:05:51+03:00</lastmod>
   </url>
   
   <url>
-    <loc>https://cirta.dev/post/docker-db/</loc>
+    <loc>https://cirta.dev/post/dockerdb/</loc>
     <lastmod>2020-04-25T19:05:51+03:00</lastmod>
   </url>
   
