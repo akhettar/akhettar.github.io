@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>golang on Ayache Khettar</title>
-    <link>https://www.cirta.dev/tags/golang/</link>
-    <description>Recent content in golang on Ayache Khettar</description>
+    <title>kubernetes on Ayache Khettar</title>
+    <link>https://www.cirta.dev/tags/kubernetes/</link>
+    <description>Recent content in kubernetes on Ayache Khettar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/ribice&#34;&gt;Emir Ribic&lt;/a&gt; 2017</copyright>
     <lastBuildDate>Tue, 28 Apr 2020 11:19:47 +0300</lastBuildDate>
     
-	<atom:link href="https://www.cirta.dev/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.cirta.dev/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -19,16 +19,6 @@
       
       <guid>https://www.cirta.dev/post/vault-secrets/</guid>
       <description>Introduction Last year I joined a team of backend developer working on an innovative fintech product. Java was mainly used to write most of the backend services. I started experimenting with the Go language by writing REST services with a simple domain context. I was impressed by the simplicity of the language and I thought why not introduce it to the team. Of course there was some resistance to the suggestion and the main arguments revolved around the tooling and the vast amount of Java library we have at our disposition when writing the core backend services of the platform.</description>
-    </item>
-    
-    <item>
-      <title>How to publish Go documentation to the go.dev package repository</title>
-      <link>https://www.cirta.dev/post/go-doc/</link>
-      <pubDate>Sun, 26 Apr 2020 13:05:51 +0300</pubDate>
-      
-      <guid>https://www.cirta.dev/post/go-doc/</guid>
-      <description>Introduction In this brief post I am going to show you how to automatically publish your Go doc library to Go package repository using Github action build pipeline. You do not need to generate documentation of your code locally then push it to repository. All you need is to let the Go package repository where your library is hosted then it will link it automatically.
-All it is needed is to run the following command from your local machine</description>
     </item>
     
   </channel>

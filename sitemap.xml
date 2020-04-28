@@ -4,7 +4,37 @@
   
   <url>
     <loc>https://www.cirta.dev/</loc>
-    <lastmod>2020-04-26T13:05:51+03:00</lastmod>
+    <lastmod>2020-04-28T11:19:47+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.cirta.dev/tags/golang/</loc>
+    <lastmod>2020-04-28T11:19:47+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.cirta.dev/post/vault-secrets/</loc>
+    <lastmod>2020-04-28T11:19:47+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.cirta.dev/tags/kubernetes/</loc>
+    <lastmod>2020-04-28T11:19:47+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.cirta.dev/post/</loc>
+    <lastmod>2020-04-28T11:19:47+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.cirta.dev/tags/</loc>
+    <lastmod>2020-04-28T11:19:47+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.cirta.dev/tags/vault/</loc>
+    <lastmod>2020-04-28T11:19:47+03:00</lastmod>
   </url>
   
   <url>
@@ -18,22 +48,7 @@
   </url>
   
   <url>
-    <loc>https://www.cirta.dev/tags/golang/</loc>
-    <lastmod>2020-04-26T13:05:51+03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.cirta.dev/post/</loc>
-    <lastmod>2020-04-26T13:05:51+03:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://www.cirta.dev/post/go-doc/</loc>
-    <lastmod>2020-04-26T13:05:51+03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.cirta.dev/tags/</loc>
     <lastmod>2020-04-26T13:05:51+03:00</lastmod>
   </url>
   

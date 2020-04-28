@@ -7,13 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/ribice&#34;&gt;Emir Ribic&lt;/a&gt; 2017</copyright>
-    <lastBuildDate>Sun, 26 Apr 2020 13:05:51 +0300</lastBuildDate>
+    <lastBuildDate>Tue, 28 Apr 2020 11:19:47 +0300</lastBuildDate>
     
 	<atom:link href="https://www.cirta.dev/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Publish Go doc to go.dev package repository</title>
+      <title>How to load secrets from the vault server once at runtime</title>
+      <link>https://www.cirta.dev/post/vault-secrets/</link>
+      <pubDate>Tue, 28 Apr 2020 11:19:47 +0300</pubDate>
+      
+      <guid>https://www.cirta.dev/post/vault-secrets/</guid>
+      <description>Introduction Last year I joined a team of backend developer working on an innovative fintech product. Java was mainly used to write most of the backend services. I started experimenting with the Go language by writing REST services with a simple domain context. I was impressed by the simplicity of the language and I thought why not introduce it to the team. Of course there was some resistance to the suggestion and the main arguments revolved around the tooling and the vast amount of Java library we have at our disposition when writing the core backend services of the platform.</description>
+    </item>
+    
+    <item>
+      <title>How to publish Go documentation to the go.dev package repository</title>
       <link>https://www.cirta.dev/post/go-doc/</link>
       <pubDate>Sun, 26 Apr 2020 13:05:51 +0300</pubDate>
       
