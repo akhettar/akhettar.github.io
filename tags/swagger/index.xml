@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>swagger on Ayache Khettar</title>
+    <link>https://www.cirta.dev/tags/swagger/</link>
+    <description>Recent content in swagger on Ayache Khettar</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/ribice&#34;&gt;Emir Ribic&lt;/a&gt; 2017</copyright>
+    <lastBuildDate>Wed, 29 Apr 2020 19:22:55 +0300</lastBuildDate>
+    
+	<atom:link href="https://www.cirta.dev/tags/swagger/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to publish REST API to AWS API Gateway from swagger doc</title>
+      <link>https://www.cirta.dev/post/swagger-apigw/</link>
+      <pubDate>Wed, 29 Apr 2020 19:22:55 +0300</pubDate>
+      
+      <guid>https://www.cirta.dev/post/swagger-apigw/</guid>
+      <description>In my last project we used AWS api gateway to expose our backend services to the outside world. We wanted to automate the whole process of publishing the REST api of each service as part of the continuous integration pipeline. What this means is that after a given service is deployed to an environment, we pull the dynamically generated swagger document from that environment and publish all the endpoints to AWS API gateway.</description>
+    </item>
+    
+  </channel>
+</rss>

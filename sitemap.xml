@@ -4,7 +4,57 @@
   
   <url>
     <loc>https://www.cirta.dev/</loc>
-    <lastmod>2020-04-28T11:19:47+03:00</lastmod>
+    <lastmod>2020-04-30T18:15:06+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.cirta.dev/tags/cat/</loc>
+    <lastmod>2020-04-30T18:15:06+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.cirta.dev/tags/functional-programming/</loc>
+    <lastmod>2020-04-30T18:15:06+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.cirta.dev/post/</loc>
+    <lastmod>2020-04-30T18:15:06+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.cirta.dev/tags/reader/</loc>
+    <lastmod>2020-04-30T18:15:06+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.cirta.dev/tags/</loc>
+    <lastmod>2020-04-30T18:15:06+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.cirta.dev/post/cat-reader/</loc>
+    <lastmod>2020-04-30T18:15:06+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.cirta.dev/tags/aws-api-gateway/</loc>
+    <lastmod>2020-04-29T19:22:55+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.cirta.dev/tags/go/</loc>
+    <lastmod>2020-04-29T19:22:55+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.cirta.dev/post/swagger-apigw/</loc>
+    <lastmod>2020-04-29T19:22:55+03:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://www.cirta.dev/tags/swagger/</loc>
+    <lastmod>2020-04-29T19:22:55+03:00</lastmod>
   </url>
   
   <url>
@@ -19,16 +69,6 @@
   
   <url>
     <loc>https://www.cirta.dev/tags/kubernetes/</loc>
-    <lastmod>2020-04-28T11:19:47+03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.cirta.dev/post/</loc>
-    <lastmod>2020-04-28T11:19:47+03:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://www.cirta.dev/tags/</loc>
     <lastmod>2020-04-28T11:19:47+03:00</lastmod>
   </url>
   

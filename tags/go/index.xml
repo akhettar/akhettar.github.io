@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>go on Ayache Khettar</title>
-    <link>https://cirta.dev/tags/go/</link>
-    <description>Recent content in go on Ayache Khettar</description>
+    <title>Go on Ayache Khettar</title>
+    <link>https://www.cirta.dev/tags/go/</link>
+    <description>Recent content in Go on Ayache Khettar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/ribice&#34;&gt;Emir Ribic&lt;/a&gt; 2017</copyright>
-    <lastBuildDate>Wed, 02 Apr 2014 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 29 Apr 2020 19:22:55 +0300</lastBuildDate>
     
-	<atom:link href="https://cirta.dev/tags/go/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.cirta.dev/tags/go/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>(Hu)go Template Primer</title>
-      <link>https://cirta.dev/post/goisforlovers/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      <title>How to publish REST API to AWS API Gateway from swagger doc</title>
+      <link>https://www.cirta.dev/post/swagger-apigw/</link>
+      <pubDate>Wed, 29 Apr 2020 19:22:55 +0300</pubDate>
       
-      <guid>https://cirta.dev/post/goisforlovers/</guid>
-      <description>Hugo uses the excellent go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in go templates.
-This document is a brief primer on using go templates.</description>
+      <guid>https://www.cirta.dev/post/swagger-apigw/</guid>
+      <description>In my last project we used AWS api gateway to expose our backend services to the outside world. We wanted to automate the whole process of publishing the REST api of each service as part of the continuous integration pipeline. What this means is that after a given service is deployed to an environment, we pull the dynamically generated swagger document from that environment and publish all the endpoints to AWS API gateway.</description>
     </item>
     
   </channel>

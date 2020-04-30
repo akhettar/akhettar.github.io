@@ -7,10 +7,64 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>&amp;copy; &lt;a href=&#34;https://github.com/ribice&#34;&gt;Emir Ribic&lt;/a&gt; 2017</copyright>
-    <lastBuildDate>Tue, 28 Apr 2020 11:19:47 +0300</lastBuildDate>
+    <lastBuildDate>Thu, 30 Apr 2020 18:15:06 +0300</lastBuildDate>
     
 	<atom:link href="https://www.cirta.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>cat</title>
+      <link>https://www.cirta.dev/tags/cat/</link>
+      <pubDate>Thu, 30 Apr 2020 18:15:06 +0300</pubDate>
+      
+      <guid>https://www.cirta.dev/tags/cat/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>functional programming</title>
+      <link>https://www.cirta.dev/tags/functional-programming/</link>
+      <pubDate>Thu, 30 Apr 2020 18:15:06 +0300</pubDate>
+      
+      <guid>https://www.cirta.dev/tags/functional-programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>reader</title>
+      <link>https://www.cirta.dev/tags/reader/</link>
+      <pubDate>Thu, 30 Apr 2020 18:15:06 +0300</pubDate>
+      
+      <guid>https://www.cirta.dev/tags/reader/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>aws api gateway</title>
+      <link>https://www.cirta.dev/tags/aws-api-gateway/</link>
+      <pubDate>Wed, 29 Apr 2020 19:22:55 +0300</pubDate>
+      
+      <guid>https://www.cirta.dev/tags/aws-api-gateway/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Go</title>
+      <link>https://www.cirta.dev/tags/go/</link>
+      <pubDate>Wed, 29 Apr 2020 19:22:55 +0300</pubDate>
+      
+      <guid>https://www.cirta.dev/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>swagger</title>
+      <link>https://www.cirta.dev/tags/swagger/</link>
+      <pubDate>Wed, 29 Apr 2020 19:22:55 +0300</pubDate>
+      
+      <guid>https://www.cirta.dev/tags/swagger/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>golang</title>

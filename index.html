@@ -11,7 +11,7 @@
 <meta property='og:description' content=''>
 <meta property='og:url' content='https://www.cirta.dev/'>
 <meta property='og:site_name' content='Ayache Khettar'>
-<meta property='og:type' content='website'><meta property='og:image' content='https://www.gravatar.com/avatar/9dc01e9dc52f400f0e635aed3ec85a72?s=256'><meta property='article:section' content=''><meta property='og:updated_time' content='2020-04-28T11:19:47&#43;03:00'/><meta name='twitter:card' content='summary'><meta name='twitter:site' content='@AyacheKhettar'><meta name='twitter:creator' content='@AyacheKhettar'>
+<meta property='og:type' content='website'><meta property='og:image' content='https://www.gravatar.com/avatar/9dc01e9dc52f400f0e635aed3ec85a72?s=256'><meta property='article:section' content=''><meta property='og:updated_time' content='2020-04-30T18:15:06&#43;03:00'/><meta name='twitter:card' content='summary'><meta name='twitter:site' content='@AyacheKhettar'><meta name='twitter:creator' content='@AyacheKhettar'>
 
 
 <link href="https://www.cirta.dev/index.xml" rel="alternate" type="application/rss+xml" title="Ayache Khettar" />
@@ -92,6 +92,76 @@
       <div class="subtitle tags is-6 is-pulled-right">
         
         
+<a class="subtitle is-6" href="/tags/functional-programming/">#functional programming</a>
+
+
+
+  
+  | <a class="subtitle is-6" href="/tags/cat/">#cat</a>
+  
+  | <a class="subtitle is-6" href="/tags/reader/">#reader</a>
+  
+
+
+        
+      </div>
+      <h2 class="subtitle is-6 date">April 30, 2020</h2>
+      <h1 class="title"><a href="https://www.cirta.dev/post/cat-reader/">Using Cat Data Reader Monad
+
+  
+    
+  
+</a></h1>
+      <div class="content">
+        In this short post, I would like to introduce you the Reader monad — see cats documentation.
+The first thing you need to know is that the Reader monad represents a function: A =&gt; B
+class Reader[A,B](run: A =&gt; B) { // details omitted } We could use the Reader monad to achieve various things, but I would like to show you in this post how to use it to achieve composition and dependency injection.
+        
+        <a class="button is-link" href="https://www.cirta.dev/post/cat-reader/" style="height:28px">
+          Read more
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <div class="subtitle tags is-6 is-pulled-right">
+        
+        
+<a class="subtitle is-6" href="/tags/go/">#Go</a>
+
+
+
+  
+  | <a class="subtitle is-6" href="/tags/swagger/">#swagger</a>
+  
+  | <a class="subtitle is-6" href="/tags/aws-api-gateway/">#aws api gateway</a>
+  
+
+
+        
+      </div>
+      <h2 class="subtitle is-6 date">April 29, 2020</h2>
+      <h1 class="title"><a href="https://www.cirta.dev/post/swagger-apigw/">How to publish REST API to AWS API Gateway from swagger doc
+
+  
+    
+  
+</a></h1>
+      <div class="content">
+        In my last project we used AWS api gateway to expose our backend services to the outside world. We wanted to automate the whole process of publishing the REST api of each service as part of the continuous integration pipeline. What this means is that after a given service is deployed to an environment, we pull the dynamically generated swagger document from that environment and publish all the endpoints to AWS API gateway.
+        
+        <a class="button is-link" href="https://www.cirta.dev/post/swagger-apigw/" style="height:28px">
+          Read more
+        </a>
+        
+      </div>
+    </article>
+    
+    <article>
+      <div class="subtitle tags is-6 is-pulled-right">
+        
+        
 <a class="subtitle is-6" href="/tags/golang/">#golang</a>
 
 
@@ -113,7 +183,7 @@
   
 </a></h1>
       <div class="content">
-        Introduction Last year I joined a team of backend developer working on an innovative fintech product. Java was mainly used to write most of the backend services. I started experimenting with the Go language by writing REST services with a simple domain context. I was impressed by the simplicity of the language and I thought why not introduce it to the team. Of course there was some resistance to the suggestion and the main arguments revolved around the tooling and the vast amount of Java library we have at our disposition when writing the core backend services of the platform.
+        Last year I joined a team of backend developer working on an innovative fintech product. Java was mainly used to write most of the backend services. I started experimenting with the Go language by writing REST services with a simple domain context. I was impressed by the simplicity of the language and I thought why not introduce it to the team. Of course there was some resistance to the suggestion and the main arguments revolved around the tooling and the vast amount of Java library we have at our disposition when writing the core backend services of the platform.
         
         <a class="button is-link" href="https://www.cirta.dev/post/vault-secrets/" style="height:28px">
           Read more
@@ -147,7 +217,7 @@
   
 </a></h1>
       <div class="content">
-        Introduction In this brief post I am going to show you how to automatically publish your Go doc library to Go package repository using Github action build pipeline. You do not need to generate documentation of your code locally then push it to repository. All you need is to let the Go package repository where your library is hosted then it will link it automatically.
+        In this brief post I am going to show you how to automatically publish your Go doc library to Go package repository using Github action build pipeline. You do not need to generate documentation of your code locally then push it to repository. All you need is to let the Go package repository where your library is hosted then it will link it automatically.
 All it is needed is to run the following command from your local machine
         
         <a class="button is-link" href="https://www.cirta.dev/post/go-doc/" style="height:28px">
@@ -180,7 +250,7 @@ All it is needed is to run the following command from your local machine
   
 </a></h1>
       <div class="content">
-        Introduction I am going to show you how to write an integration test which requires connection to mongodb or a postgres database.
+        I am going to show you how to write an integration test which requires connection to mongodb or a postgres database.
 I have written a Go library that can be embedded in your integration test and will ensure the followings
  Run the desired DB container. Run the test suite. Destroy the container, i.e the container is stopped, deleted along the volume it has created.  Running Mongo DB container You can simply initiate mongo container as part of your test suite by including the below snippet in your integration test
         

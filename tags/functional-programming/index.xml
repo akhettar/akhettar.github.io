@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>functional programming on Ayache Khettar</title>
+    <link>https://www.cirta.dev/tags/functional-programming/</link>
+    <description>Recent content in functional programming on Ayache Khettar</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/ribice&#34;&gt;Emir Ribic&lt;/a&gt; 2017</copyright>
+    <lastBuildDate>Thu, 30 Apr 2020 18:15:06 +0300</lastBuildDate>
+    
+	<atom:link href="https://www.cirta.dev/tags/functional-programming/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Using Cat Data Reader Monad</title>
+      <link>https://www.cirta.dev/post/cat-reader/</link>
+      <pubDate>Thu, 30 Apr 2020 18:15:06 +0300</pubDate>
+      
+      <guid>https://www.cirta.dev/post/cat-reader/</guid>
+      <description>In this short post, I would like to introduce you the Reader monad — see cats documentation.
+The first thing you need to know is that the Reader monad represents a function: A =&amp;gt; B
+class Reader[A,B](run: A =&amp;gt; B) { // details omitted } We could use the Reader monad to achieve various things, but I would like to show you in this post how to use it to achieve composition and dependency injection.</description>
+    </item>
+    
+  </channel>
+</rss>

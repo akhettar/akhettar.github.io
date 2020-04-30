@@ -106,8 +106,7 @@
     <h1 class="title">How to load secrets from the vault server once at runtime</h1>
     
     <div class="content">
-      <h1 id="introduction">Introduction</h1>
-<p><img src="/working-hard.png" alt="sage"></p>
+      <p><img src="/working-hard.png" alt="sage"></p>
 <p>Last year I joined a team of backend developer working on an innovative fintech product. Java was mainly used to write most of the backend services.
 I started experimenting with the <a href="https://go.dev/">Go language</a> by writing REST services with a simple domain context. I was impressed by the simplicity of the language and
 I thought why not introduce it to the team. Of course there was some resistance to the suggestion and the main
@@ -117,7 +116,7 @@ write some of our backend services how are we going to load the secrets from <a 
 the simple Job of sourcing the secrets at runtime and make them available for the service. After I wrote this plugin, I eventually managed to convince the team of getting Go into our code base.</p>
 <p>In this brief post I am going to show you how this simple <a href="https://pkg.go.dev/github.com/akhettar/vault-secrets-plugin?tab=doc">Go module</a>
 can be incorporated into your Go code base to load secrets into memory of the service or an application at run time.</p>
-<h3 id="a-bit-of-theory-on-vault-authentication-methods">A bit of theory on vault authentication methods</h3>
+<h1 id="a-bit-of-theory-on-vault-authentication-methods">A bit of theory on vault authentication methods</h1>
 <p>This go module supports two type of authentication methods namely, kubernetes and App role auth method</p>
 <ol>
 <li>Kubernetes auth method</li>
@@ -235,7 +234,7 @@ can be set up locally to test this plugin can be viewed in <a href="https://lear
 </span><span style="color:#75715e"></span>	<span style="color:#a6e22e">pwd</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">client</span>.<span style="color:#a6e22e">ReadSecret</span>(<span style="color:#e6db74">&#34;password&#34;</span>)
 	<span style="color:#a6e22e">vault</span>.<span style="color:#a6e22e">Info</span>.<span style="color:#a6e22e">Printf</span>(<span style="color:#e6db74">&#34;Password is %s&#34;</span>, <span style="color:#a6e22e">pwd</span>)
 }
-</code></pre></div><h2 id="configuration-parameters-for-the-plugin">Configuration parameters for the plugin</h2>
+</code></pre></div><h1 id="configuration-parameters-for-the-plugin">Configuration parameters for the plugin</h1>
 <p>These are the environment variables required for this tool.</p>
 <table>
 <thead>

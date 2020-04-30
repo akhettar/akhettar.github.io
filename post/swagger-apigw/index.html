@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>How to publish REST API to AWS API Gateway from swagger doc | Ayache Khettar</title>
+
+<meta property='og:title' content='How to publish REST API to AWS API Gateway from swagger doc - Ayache Khettar'>
+<meta property='og:description' content='Publishing REST API to aws api gateway'>
+<meta property='og:url' content='https://www.cirta.dev/post/swagger-apigw/'>
+<meta property='og:site_name' content='Ayache Khettar'>
+<meta property='og:type' content='article'><meta property='og:image' content='https://www.gravatar.com/avatar/9dc01e9dc52f400f0e635aed3ec85a72?s=256'><meta property='article:section' content='Post'><meta property='article:tag' content='Go'><meta property='article:tag' content='swagger'><meta property='article:tag' content='aws api gateway'><meta property='article:published_time' content='2020-04-29T19:22:55&#43;03:00'/><meta property='article:modified_time' content='2020-04-29T19:22:55&#43;03:00'/><meta name='twitter:card' content='summary'><meta name='twitter:site' content='@AyacheKhettar'><meta name='twitter:creator' content='@AyacheKhettar'>
+
+
+<link href="https://www.cirta.dev/index.xml" rel="alternate" type="application/rss+xml" title="Ayache Khettar" />
+
+<link rel="stylesheet" href="/css/style.css"/><link rel='stylesheet' href='https://www.cirta.dev/css/custom.css'><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="canonical" href="https://www.cirta.dev/post/swagger-apigw/">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+</head>
+<body>
+<section class="section">
+  <div class="container">
+    <nav id="nav-main" class="nav">
+      <div id="nav-name" class="nav-left">
+        <a id="nav-anchor" class="nav-item" href="https://www.cirta.dev">
+          <h1 id="nav-heading" class="title is-4">Ayache Khettar</h1>
+        </a>
+      </div>
+      <div class="nav-right">
+        <nav id="nav-items" class="nav-item level is-mobile"><a class="level-item" aria-label="github" href='https://github.com/akhettar'
+            target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+    
+  </svg></i>
+            </span>
+          </a><a class="level-item" aria-label="twitter" href='https://twitter.com/AyacheKhettar'
+            target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+    
+  </svg></i>
+            </span>
+          </a><a class="level-item" aria-label="email" href='mailto:ayache@openconsult.digital'
+            target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+    <polyline points="22,6 12,13 2,6"/>
+    
+  </svg></i>
+            </span>
+          </a><a class="level-item" aria-label="linkedin" href='https://linkedin.com/in/akhettar'
+            target='_blank' rel='noopener'>
+            <span class="icon">
+              <i class><svg viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
+    
+    <path stroke-width="1.8" d="m5.839218,4.101561c0,1.211972 -0.974141,2.194011 -2.176459,2.194011s-2.176459,-0.982039 -2.176459,-2.194011c0,-1.211094 0.974141,-2.194011 2.176459,-2.194011s2.176459,0.982917 2.176459,2.194011zm0.017552,3.94922l-4.388022,0l0,14.04167l4.388022,0l0,-14.04167zm7.005038,0l-4.359939,0l0,14.04167l4.360816,0l0,-7.370999c0,-4.098413 5.291077,-4.433657 5.291077,0l0,7.370999l4.377491,0l0,-8.89101c0,-6.915523 -7.829986,-6.66365 -9.669445,-3.259423l0,-1.891237z"/>
+    
+  </svg></i>
+            </span>
+          </a></nav>
+      </div>
+    </nav>
+
+    <nav class="nav">
+      
+
+      
+    </nav>
+
+  </div>
+  <script src="/js/navicon-shift.js"></script>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="subtitle tags is-6 is-pulled-right">
+      
+      
+<a class="subtitle is-6" href="/tags/go/">#Go</a>
+
+
+
+  
+  | <a class="subtitle is-6" href="/tags/swagger/">#swagger</a>
+  
+  | <a class="subtitle is-6" href="/tags/aws-api-gateway/">#aws api gateway</a>
+  
+
+
+      
+    </div>
+    <h2 class="subtitle is-6">April 29, 2020</h2>
+    <h1 class="title">How to publish REST API to AWS API Gateway from swagger doc</h1>
+    
+    <div class="content">
+      <p><img src="/corona.png" alt="corona"></p>
+<p>In my last project we used <a href="https://aws.amazon.com/api-gateway/">AWS api gateway</a> to expose our backend services to the outside world. We wanted to automate
+the whole process of publishing the REST api of each service as part of the continuous integration pipeline. What this means is that after a given service is deployed
+to an environment, we pull the dynamically generated swagger document from that environment and publish all the endpoints to AWS API gateway.
+Out of this desire, <a href="https://github.com/akhettar/apigw-pub">api publisher</a> was born. I wrote this tool in Go. In this brief post I am going to show you how to automate
+REST endpoints publication through your CI pipeline</p>
+<h1 id="usage">Usage</h1>
+<p>This <a href="https://github.com/akhettar/apigw-pub">api publisher</a> runs as a docker container so it can easily be run in a <code>continuious integration pipeline</code>.
+The publisher fetches the swagger document from a given <code>url</code>, render it by adding all the required AWS extensions and publish it to AWS API gateway.</p>
+<p><code>When the publisher is run, it carries out the following tasks:</code></p>
+<ul>
+<li>Fetches vanilla swagger document from a given deployed service - exp: <code>https://raw.githubusercontent.com/swagger-api/swagger-spec/master/examples/v2.0/json/petstore-expanded.json</code></li>
+<li>Add aws extensions - see <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration.html">AWS extensions</a> to the swagger doc</li>
+<li>Import the rendered swagger into API Gateway - this will create the api gateway resources.</li>
+<li>Deploy all the resources created above into the given <code>api gateway stage</code></li>
+</ul>
+<h2 id="required-environment-variables">Required environment variables</h2>
+<p>These are the environment variables required for this tool.</p>
+<table>
+<thead>
+<tr>
+<th>Env variable</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>API_GATEWAY_ID</code></td>
+<td>The api gateway Id</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>API_GATEWAY_NAME</code></td>
+<td>The api gateway name</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>CONNECTION_TYPE</code></td>
+<td>The integration type, the following connection type supported: <code>VPC_LINK</code>, <code>PUBLIC</code>(HTTP)</td>
+<td>No (<code>PUBLIC</code>) is used by default)</td>
+</tr>
+<tr>
+<td><code>VPC_LINK_ID</code></td>
+<td>The vpc link Id for a given environment</td>
+<td>No, required only if the connection type is of VPC link type</td>
+</tr>
+<tr>
+<td><code>STAGE_NAME</code></td>
+<td>The api gateway stage name for the resource to be deployed to</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>AUTH_URL</code></td>
+<td>If <code>custom</code> authentication is enabled on the endpoints then the <code>authentcation url</code> is required <code>- more details in the auth section below</code></td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>AUTH_NAME</code></td>
+<td>The authorizer name, see below the endpoint auth section for more details</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>AUTH_TYPE</code></td>
+<td>Currently only the custom auth is supported <code>apiKey</code></td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>SWAGGER_URL</code></td>
+<td>The url of the swagger document that can be sourced from <code>in json format</code> not the actual the url to access the html. See example <a href="https://raw.githubusercontent.com/swagger-api/swagger-spec/master/examples/v2.0/json/petstore-expanded.json">swagger url</a></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>AWS_ACCESS_KEY_ID</code></td>
+<td>The aws access key</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>AWS_SECRET_ACCESS_KEY</code></td>
+<td>The aws secret access key</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>ASSUME_ROLE</code></td>
+<td>The assume role in arn format that allow this tool to publish the rest endpoints to api gateway</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>ENDPOINT_URL</code></td>
+<td>The internal host and the base endpoint of the service exp :<code>petstore.swagger.io/api</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>CORS_ENABLED</code></td>
+<td>If this flag is present, <code>cors</code> is enabled across all the endpoints</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>API_GATEWAY_ID</code></td>
+<td>The api gateway Id</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>CUSTOM_HEADERS</code></td>
+<td>A list of comma separated headers to be mapped in the http headers of the endpoint, exp: <code>CUSTOM_HEADERS=header1,header2</code></td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h2 id="aws-iam">AWS IAM</h2>
+<p>This tool recommends that the AWS IAM user is created with virtually no permissions at all. The only permission given to this user is the ability to assume a role by which the IAM user is permitted to publish REST endpoints to API Gateway. Some details can be
+found in <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-iam-policy-examples.html">AWS IAM policy do</a></p>
+<h2 id="running-the-publisher">Running the publisher</h2>
+<ol>
+<li>Running the publisher with <code>public (http)</code> connection type</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker run --env API_GATEWAY_NAME<span style="color:#f92672">=</span>api-gw-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--env SWAGGER_URL<span style="color:#f92672">=</span>https://raw.githubusercontent.com/swagger-api/swagger-spec/master/examples/v2.0/json/petstore-expanded.json <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--env ENDPOINT_URL<span style="color:#f92672">=</span>petstore.swagger.io/api <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--env CONNECTION_TYPE<span style="color:#f92672">=</span>VPC_LINK <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--env AUTH_URL<span style="color:#f92672">=</span>arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:&lt;aws-account-id&gt;:function:api-gateway-authorizer-dev-auth/invocations <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--env AUTH_NAME<span style="color:#f92672">=</span>api-gw-authorizer-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--env AUTH_TYPE<span style="color:#f92672">=</span>apiKey <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--env API_GATEWAY_ID<span style="color:#f92672">=</span>nizzzddqg <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--env API_GATEWAY_NAME<span style="color:#f92672">=</span>app-gateway-name <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--env STAGE_NAME<span style="color:#f92672">=</span>v1 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--env ASSUME_ROLE<span style="color:#f92672">=</span>arn:aws:iam::****************:role/apigw-role <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--env AWS_ACCESS_KEY_ID<span style="color:#f92672">=</span>************ <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--env AWS_SECRET_ACCESS_KEY<span style="color:#f92672">=</span>******************** ayache/apigw-publisher /bin/apigw-pub
+</code></pre></div><ol start="2">
+<li>Running the publisher <code>vpc link</code> connection type</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker run --env API_GATEWAY_NAME<span style="color:#f92672">=</span>wave-api-gw-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--env SWAGGER_URL<span style="color:#f92672">=</span>https://raw.githubusercontent.com/swagger-api/swagger-spec/master/examples/v2.0/json/petstore-expanded.json <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--env ENDPOINT_URL<span style="color:#f92672">=</span>petstore.swagger.io/api <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--env CONNECTION_TYPE<span style="color:#f92672">=</span>VPC_LINK <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--env VPC_LINK_ID<span style="color:#f92672">=</span>226jx1 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--env AUTH_URL<span style="color:#f92672">=</span>arn:aws:apigateway:eu-west-1:lambda:path/2015-03-31/functions/arn:aws:lambda:eu-west-1:&lt;aws-account-id&gt;:function:api-gateway-authorizer-dev-auth/invocations <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--env AUTH_NAME<span style="color:#f92672">=</span>wave-api-gw-dev <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--env AUTH_TYPE<span style="color:#f92672">=</span>apiKey <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--env STAGE_NAME<span style="color:#f92672">=</span>v1 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--env API_GATEWAY_ID<span style="color:#f92672">=</span>nilbbdqvqg <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--env STAGE_NAME<span style="color:#f92672">=</span>v1 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--env ASSUME_ROLE<span style="color:#f92672">=</span>arn:aws:iam::74***87740553:role/apigw-role <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--env AWS_ACCESS_KEY_*************CYL <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>--env AWS_SECRET_ACCESS_KEY<span style="color:#f92672">=</span>************************** ayache/apigw-publisher /bin/apigw-pub
+</code></pre></div><h2 id="running-the-publisher-in-a-circleci-pipeline">Running the publisher in a circleci pipeline</h2>
+<p>The step below should be run after a service is successfully deployed to a target environment so the REST API can be deployed from the latest swagger document</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">defaults</span>: <span style="color:#75715e">&amp;swaggerpublisher</span>
+  <span style="color:#66d9ef">&lt;&lt;</span>: <span style="color:#75715e">*dir</span>
+  <span style="color:#66d9ef">docker</span>:
+    - <span style="color:#66d9ef">image</span>: ayache/swagger-publisher
+
+<span style="color:#66d9ef">publish-apigw-dev</span>:
+    <span style="color:#66d9ef">&lt;&lt;</span>: <span style="color:#75715e">*swaggerpublisher</span>
+    <span style="color:#66d9ef">steps</span>:
+      - checkout
+      - <span style="color:#66d9ef">run</span>:
+          <span style="color:#66d9ef">name</span>: Publish swagger to api gateway
+          <span style="color:#66d9ef">command</span>: <span style="color:#e6db74">|
+</span><span style="color:#e6db74">            SWAGGER_URL=https://raw.githubusercontent.com/swagger-api/swagger-spec/master/examples/v2.0/json/petstore-expanded.json \</span>
+            ENDPOINT_URL=petstore.swagger.io/api \
+            CONNECTION_TYPE=VPC_LINK \
+            VPC_LINK_ID=226jx1 \
+            AUTH_URL=arn:aws:apigateway:eu-west<span style="color:#ae81ff">-1</span>:lambda:path/<span style="color:#e6db74">2015-03-31</span>/functions/arn:aws:lambda:eu-west<span style="color:#ae81ff">-1</span>:&lt;aws-account-id&gt;:function:api-gateway-authorizer-dev-auth/invocations \
+            AUTH_NAME=wave-api-gw-dev \
+            AUTH_TYPE=apiKey \
+            STAGE_NAME=v1 \
+            API_GATEWAY_ID=nilbbdqvqg \
+            STAGE_NAME=v1 \
+            ASSUME_ROLE=arn:aws:iam::<span style="color:#ae81ff">74</span><span style="color:#75715e">***87740553:role/apigw-role</span> \
+            AWS_ACCESS_KEY_<span style="color:#75715e">*************CYL</span> \
+            AWS_SECRET_ACCESS_KEY=<span style="color:#75715e">**************************</span> ayache/apigw-publisher /bin/apigw-pub
+</code></pre></div><h1 id="authorization-schemes">Authorization schemes</h1>
+<p>This publisher is using the GO openAPI spec version 2.0 to parse the swagger and adds all the AWS extensions. The only authentication type supported by this tool is the custom auth - see below an illustration</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;securityDefinitions&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span> {
+    <span style="color:#f92672">&#34;test-authorizer&#34;</span> : {
+      <span style="color:#f92672">&#34;type&#34;</span> : <span style="color:#e6db74">&#34;apiKey&#34;</span>,                         <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">Required</span> <span style="color:#960050;background-color:#1e0010">and</span> <span style="color:#960050;background-color:#1e0010">the</span> <span style="color:#960050;background-color:#1e0010">value</span> <span style="color:#960050;background-color:#1e0010">must</span> <span style="color:#960050;background-color:#1e0010">be</span> <span style="color:#f92672">&#34;apiKey&#34;</span> <span style="color:#960050;background-color:#1e0010">for</span> <span style="color:#960050;background-color:#1e0010">an</span> <span style="color:#960050;background-color:#1e0010">API</span> <span style="color:#960050;background-color:#1e0010">Gateway</span> <span style="color:#960050;background-color:#1e0010">API.</span>
+      <span style="color:#e6db74">&#34;name&#34;</span> : <span style="color:#e6db74">&#34;Authorization&#34;</span>,                  <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">The</span> <span style="color:#960050;background-color:#1e0010">name</span> <span style="color:#960050;background-color:#1e0010">of</span> <span style="color:#960050;background-color:#1e0010">the</span> <span style="color:#960050;background-color:#1e0010">header</span> <span style="color:#960050;background-color:#1e0010">containing</span> <span style="color:#960050;background-color:#1e0010">the</span> <span style="color:#960050;background-color:#1e0010">authorization</span> <span style="color:#960050;background-color:#1e0010">token.</span>
+      <span style="color:#f92672">&#34;in&#34;</span> : <span style="color:#e6db74">&#34;header&#34;</span>,                           <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">Required</span> <span style="color:#960050;background-color:#1e0010">and</span> <span style="color:#960050;background-color:#1e0010">the</span> <span style="color:#960050;background-color:#1e0010">value</span> <span style="color:#960050;background-color:#1e0010">must</span> <span style="color:#960050;background-color:#1e0010">be</span> <span style="color:#f92672">&#34;header&#34;</span> <span style="color:#960050;background-color:#1e0010">for</span> <span style="color:#960050;background-color:#1e0010">an</span> <span style="color:#960050;background-color:#1e0010">API</span> <span style="color:#960050;background-color:#1e0010">Gateway</span> <span style="color:#960050;background-color:#1e0010">API.</span>
+      <span style="color:#e6db74">&#34;x-amazon-apigateway-authtype&#34;</span> : <span style="color:#e6db74">&#34;oauth2&#34;</span>, <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">Specifies</span> <span style="color:#960050;background-color:#1e0010">the</span> <span style="color:#960050;background-color:#1e0010">authorization</span> <span style="color:#960050;background-color:#1e0010">mechanism</span> <span style="color:#960050;background-color:#1e0010">for</span> <span style="color:#960050;background-color:#1e0010">the</span> <span style="color:#960050;background-color:#1e0010">client.</span>
+      <span style="color:#f92672">&#34;x-amazon-apigateway-authorizer&#34;</span> : {       <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">An</span> <span style="color:#960050;background-color:#1e0010">API</span> <span style="color:#960050;background-color:#1e0010">Gateway</span> <span style="color:#960050;background-color:#1e0010">Lambda</span> <span style="color:#960050;background-color:#1e0010">authorizer</span> <span style="color:#960050;background-color:#1e0010">definition</span>
+        <span style="color:#f92672">&#34;type&#34;</span> : <span style="color:#e6db74">&#34;token&#34;</span>,                        <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">Required</span> <span style="color:#960050;background-color:#1e0010">property</span> <span style="color:#960050;background-color:#1e0010">and</span> <span style="color:#960050;background-color:#1e0010">the</span> <span style="color:#960050;background-color:#1e0010">value</span> <span style="color:#960050;background-color:#1e0010">must</span> <span style="color:#f92672">&#34;token&#34;</span>
+        <span style="color:#e6db74">&#34;authorizerUri&#34;</span> : <span style="color:#e6db74">&#34;arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:account-id:function:function-name/invocations&#34;</span>,
+        <span style="color:#f92672">&#34;authorizerCredentials&#34;</span> : <span style="color:#e6db74">&#34;arn:aws:iam::account-id:role&#34;</span>,
+        <span style="color:#f92672">&#34;identityValidationExpression&#34;</span> : <span style="color:#e6db74">&#34;^x-[a-z]+&#34;</span>,
+        <span style="color:#f92672">&#34;authorizerResultTtlInSeconds&#34;</span> : <span style="color:#ae81ff">60</span>
+      }
+    }
+  }
+</code></pre></div><p>Unfortunately the support for <code>JWT Cognito authentication</code> is not supported in GO openApi spec 2.0, the 3.0 version has not been released yet see <a href="https://github.com/go-openapi/spec/issues/21">open spec 3.0 issue</a>. If you are securing the endpoint with
+<code>JWT Cognito</code> then unfortunately you will have to run <code>terraform</code> command to secure these endpoints - see an example below</p>
+<p>The snippet below is taken from <a href="https://www.terraform.io/docs/providers/aws/r/api_gateway_method.html">terraform doc</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#960050;background-color:#1e0010">variable</span> <span style="color:#e6db74">&#34;cognito_user_pool_name&#34;</span> {}
+
+<span style="color:#960050;background-color:#1e0010">data</span> <span style="color:#e6db74">&#34;aws_cognito_user_pools&#34;</span> <span style="color:#e6db74">&#34;this&#34;</span> {
+  <span style="color:#960050;background-color:#1e0010">name</span> <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#f92672">&#34;${var.cognito_user_pool_name}&#34;</span>
+}
+
+<span style="color:#960050;background-color:#1e0010">resource</span> <span style="color:#e6db74">&#34;aws_api_gateway_rest_api&#34;</span> <span style="color:#e6db74">&#34;this&#34;</span> {
+  <span style="color:#960050;background-color:#1e0010">name</span> <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#f92672">&#34;with-authorizer&#34;</span>
+}
+
+<span style="color:#960050;background-color:#1e0010">resource</span> <span style="color:#e6db74">&#34;aws_api_gateway_resource&#34;</span> <span style="color:#e6db74">&#34;this&#34;</span> {
+  <span style="color:#960050;background-color:#1e0010">rest_api_id</span> <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#f92672">&#34;${aws_api_gateway_rest_api.this.id}&#34;</span>
+  <span style="color:#960050;background-color:#1e0010">parent_id</span>   <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#e6db74">&#34;${aws_api_gateway_rest_api.this.root_resource_id}&#34;</span>
+  <span style="color:#960050;background-color:#1e0010">path_part</span>   <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#e6db74">&#34;{proxy+}&#34;</span>
+}
+
+<span style="color:#960050;background-color:#1e0010">resource</span> <span style="color:#e6db74">&#34;aws_api_gateway_authorizer&#34;</span> <span style="color:#e6db74">&#34;this&#34;</span> {
+  <span style="color:#960050;background-color:#1e0010">name</span>          <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#f92672">&#34;CognitoUserPoolAuthorizer&#34;</span>
+  <span style="color:#960050;background-color:#1e0010">type</span>          <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#e6db74">&#34;COGNITO_USER_POOLS&#34;</span>
+  <span style="color:#960050;background-color:#1e0010">rest_api_id</span>   <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#e6db74">&#34;${aws_api_gateway_rest_api.this.id}&#34;</span>
+  <span style="color:#960050;background-color:#1e0010">provider_arns</span> <span style="color:#960050;background-color:#1e0010">=</span> [<span style="color:#e6db74">&#34;${data.aws_cognito_user_pools.this.arns}&#34;</span>]
+}
+
+<span style="color:#960050;background-color:#1e0010">resource</span> <span style="color:#e6db74">&#34;aws_api_gateway_method&#34;</span> <span style="color:#e6db74">&#34;any&#34;</span> {
+  <span style="color:#960050;background-color:#1e0010">rest_api_id</span>   <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#f92672">&#34;${aws_api_gateway_rest_api.this.id}&#34;</span>
+  <span style="color:#960050;background-color:#1e0010">resource_id</span>   <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#e6db74">&#34;${aws_api_gateway_resource.this.id}&#34;</span>
+  <span style="color:#960050;background-color:#1e0010">http_method</span>   <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#e6db74">&#34;ANY&#34;</span>
+  <span style="color:#960050;background-color:#1e0010">authorization</span> <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#e6db74">&#34;COGNITO_USER_POOLS&#34;</span>
+  <span style="color:#960050;background-color:#1e0010">authorizer_id</span> <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#e6db74">&#34;${aws_api_gateway_authorizer.this.id}&#34;</span>
+
+  <span style="color:#960050;background-color:#1e0010">request_parameters</span> <span style="color:#960050;background-color:#1e0010">=</span> {
+    <span style="color:#f92672">&#34;method.request.path.proxy&#34;</span> <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#66d9ef">true</span>
+  }
+}
+</code></pre></div><h2 id="aws-api-extensions">AWS API Extensions</h2>
+<p><img src="/export-swagger.png" alt="APIGW exporter"></p>
+<p>In order to control this tool on deployment, there are a few Swagger Extensions we leverage as configuration.</p>
+<ul>
+<li><code>x-publish</code> - this flag if set to false, the endpoint will not get published.</li>
+<li><code>x-auth-disabled</code> - this flag if set to true, the endpoint will not be secured if custom auth is required</li>
+</ul>
+<p>In Java these extensions can be controlled using something similar to the below, simply add this annotation above a controller method:</p>
+<pre><code>@ApiOperation(value = &quot;Describe this API for the Swagger docs&quot;,
+        extensions = @Extension(properties = {
+            @ExtensionProperty(name = &quot;x-publish&quot;, value = &quot;false&quot;),
+            @ExtensionProperty(name = &quot;x-auth-disabled&quot;, value = &quot;true&quot;),
+        }))
+</code></pre><p>Details on the authorization scheme can be found here: <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-authorizer.html">AWS swagger extension authorizer</a></p>
+
+      
+      <div class="related">
+</div>
+      
+    </div>
+    
+  </div>
+</section>
+
+    <script src="/js/copycode.js"></script>
+
+
+<section class="section">
+  <div class="container">
+    <aside><div id="disqus_thread"></div></aside>
+  
+    <div id="show_comments"><a id="load_comments" class="button is-link">Load comments</a></div>
+  
+    <script type="text/javascript">
+      var disqus_shortname = 'shortname';
+      function disqus() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+  
+      
+      var hash = window.location.hash.substr(1);
+      if ((hash.length > 8) && (hash.substring(0, 8) === "comment-")) {
+        disqus();
+        document.getElementById("show_comments").style.display = "none";
+      } else {
+        document.getElementById('load_comments').onclick = function() {
+          disqus();
+          document.getElementById("show_comments").style.display = "none";
+        };
+      }
+  
+
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="https://github.com/ribice">Emir Ribic</a> 2017</p>
+    
+      <p>Powered by <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/ribice/kiss">Kiss</a>.</p>
+    
+  </div>
+</section>
+
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="\/\/matomo.cirta.dev\/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '1']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript>
+  <img src="//matomo.cirta.dev/piwik.php?idsite=1&amp;rec=1" style="border:0" alt="" />
+</noscript>
+
+<script>
+    (function(f, a, t, h, o, m){
+        a[h]=a[h]||function(){
+            (a[h].q=a[h].q||[]).push(arguments)
+        };
+        o=f.createElement('script'),
+        m=f.getElementsByTagName('script')[0];
+        o.async=1; o.src=t; o.id='fathom-script';
+        m.parentNode.insertBefore(o,m)
+    })(document, window, '\/\/fathom.cirta.dev\/tracker.js', 'fathom');
+    fathom('trackPageview');
+</script>
+</body>
+</html>
+
