@@ -109,10 +109,8 @@
       <p><img src="/corona.png" alt="corona"></p>
 <p>In my last project we used <a href="https://aws.amazon.com/api-gateway/">AWS api gateway</a> to expose our backend services to the outside world. We wanted to automate
 the whole process of publishing the REST api of each service as part of the continuous integration pipeline. What this means is that after a given service is deployed
-to an environment, we pull the dynamically generated swagger document from that environment and publish all the endpoints to AWS API gateway.
-Out of this desire, <a href="https://github.com/akhettar/apigw-pub">api publisher</a> was born. I wrote this tool in Go. In this brief post I am going to show you how to automate
-REST endpoints publication through your CI pipeline</p>
-<h1 id="usage">Usage</h1>
+to an environment, we pull the dynamically generated swagger document from that environment and publish all the endpoints to AWS API gateway. Out of this desire, <a href="https://github.com/akhettar/apigw-pub">api publisher</a> was born. I wrote this tool in Go. In this brief post I am going to show you how to automate REST endpoints publication through your CI pipeline</p>
+<h2 id="usage">Usage</h2>
 <p>This <a href="https://github.com/akhettar/apigw-pub">api publisher</a> runs as a docker container so it can easily be run in a <code>continuious integration pipeline</code>.
 The publisher fetches the swagger document from a given <code>url</code>, render it by adding all the required AWS extensions and publish it to AWS API gateway.</p>
 <p><code>When the publisher is run, it carries out the following tasks:</code></p>
@@ -395,12 +393,25 @@ found in <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/a
 
 <section class="section">
   <div class="container has-text-centered">
-    <p>&copy; <a href="https://github.com/ribice">Emir Ribic</a> 2017</p>
+    <p>2020 © Copyright Ayache khettar</p>
     
       <p>Powered by <a href="https://gohugo.io/">Hugo</a> &amp; <a href="https://github.com/ribice/kiss">Kiss</a>.</p>
     
   </div>
 </section>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-166299059-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
 
 <script type="text/javascript">
   var _paq = _paq || [];
@@ -418,18 +429,7 @@ found in <a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/a
   <img src="//matomo.cirta.dev/piwik.php?idsite=1&amp;rec=1" style="border:0" alt="" />
 </noscript>
 
-<script>
-    (function(f, a, t, h, o, m){
-        a[h]=a[h]||function(){
-            (a[h].q=a[h].q||[]).push(arguments)
-        };
-        o=f.createElement('script'),
-        m=f.getElementsByTagName('script')[0];
-        o.async=1; o.src=t; o.id='fathom-script';
-        m.parentNode.insertBefore(o,m)
-    })(document, window, '\/\/fathom.cirta.dev\/tracker.js', 'fathom');
-    fathom('trackPageview');
-</script>
+
 </body>
 </html>
 
