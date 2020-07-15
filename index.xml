@@ -7,20 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>2020 © Copyright Ayache khettar</copyright>
-    <lastBuildDate>Thu, 30 Apr 2020 18:15:06 +0300</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jul 2020 08:46:48 +0300</lastBuildDate>
     
 	<atom:link href="https://www.cirta.dev/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Using Cat Data Reader Monad</title>
-      <link>https://www.cirta.dev/post/cat-reader/</link>
-      <pubDate>Thu, 30 Apr 2020 18:15:06 +0300</pubDate>
+      <title>CI Pipeline generator</title>
+      <link>https://www.cirta.dev/post/ci-templater/</link>
+      <pubDate>Wed, 15 Jul 2020 08:46:48 +0300</pubDate>
       
-      <guid>https://www.cirta.dev/post/cat-reader/</guid>
-      <description>In this short post, I would like to introduce you the Reader monad — see cats documentation.
-The first thing you need to know is that the Reader monad represents a function: A =&amp;gt; B
-class Reader[A,B](run: A =&amp;gt; B) { // details omitted } We could use the Reader monad to achieve various things, but I would like to show you in this post how to use it to achieve composition and dependency injection.</description>
+      <guid>https://www.cirta.dev/post/ci-templater/</guid>
+      <description>I recently wrote a ci templater tool - see source code in Github. This tool generate CI config for any given CI tool (Github Action, Circleci) from a given generic CI template. It ensures consistency of the CI template across all the deployments. This tool is particularly useful with microservices architectural style becoming the norm nowadays, whereby several microservices would share the same deployment pipeline. This tool allows us to generate ci config for all these services from a one given ci template.</description>
     </item>
     
     <item>
@@ -60,6 +58,17 @@ All it is needed is to run the following command from your local machine</descri
       <description>I am going to show you how to write an integration test which requires connection to mongodb or a postgres database.
 I have written a Go library that can be embedded in your integration test and will ensure the followings
  Run the desired DB container. Run the test suite. Destroy the container, i.e the container is stopped, deleted along the volume it has created.  Running Mongo DB container You can simply initiate mongo container as part of your test suite by including the below snippet in your integration test</description>
+    </item>
+    
+    <item>
+      <title>Using Cat Data Reader Monad</title>
+      <link>https://www.cirta.dev/post/cat-reader/</link>
+      <pubDate>Tue, 30 Apr 2019 18:15:06 +0300</pubDate>
+      
+      <guid>https://www.cirta.dev/post/cat-reader/</guid>
+      <description>In this short post, I would like to introduce you the Reader monad — see cats documentation.
+The first thing you need to know is that the Reader monad represents a function: A =&amp;gt; B
+class Reader[A,B](run: A =&amp;gt; B) { // details omitted } We could use the Reader monad to achieve various things, but I would like to show you in this post how to use it to achieve composition and dependency injection.</description>
     </item>
     
   </channel>

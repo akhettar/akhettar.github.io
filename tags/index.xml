@@ -7,35 +7,35 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>2020 © Copyright Ayache khettar</copyright>
-    <lastBuildDate>Thu, 30 Apr 2020 18:15:06 +0300</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jul 2020 08:46:48 +0300</lastBuildDate>
     
 	<atom:link href="https://www.cirta.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>cat</title>
-      <link>https://www.cirta.dev/tags/cat/</link>
-      <pubDate>Thu, 30 Apr 2020 18:15:06 +0300</pubDate>
+      <title>ci</title>
+      <link>https://www.cirta.dev/tags/ci/</link>
+      <pubDate>Wed, 15 Jul 2020 08:46:48 +0300</pubDate>
       
-      <guid>https://www.cirta.dev/tags/cat/</guid>
+      <guid>https://www.cirta.dev/tags/ci/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>functional programming</title>
-      <link>https://www.cirta.dev/tags/functional-programming/</link>
-      <pubDate>Thu, 30 Apr 2020 18:15:06 +0300</pubDate>
+      <title>github-action</title>
+      <link>https://www.cirta.dev/tags/github-action/</link>
+      <pubDate>Wed, 15 Jul 2020 08:46:48 +0300</pubDate>
       
-      <guid>https://www.cirta.dev/tags/functional-programming/</guid>
+      <guid>https://www.cirta.dev/tags/github-action/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>reader</title>
-      <link>https://www.cirta.dev/tags/reader/</link>
-      <pubDate>Thu, 30 Apr 2020 18:15:06 +0300</pubDate>
+      <title>template</title>
+      <link>https://www.cirta.dev/tags/template/</link>
+      <pubDate>Wed, 15 Jul 2020 08:46:48 +0300</pubDate>
       
-      <guid>https://www.cirta.dev/tags/reader/</guid>
+      <guid>https://www.cirta.dev/tags/template/</guid>
       <description></description>
     </item>
     
@@ -94,15 +94,6 @@
     </item>
     
     <item>
-      <title>github action</title>
-      <link>https://www.cirta.dev/tags/github-action/</link>
-      <pubDate>Sun, 26 Apr 2020 13:05:51 +0300</pubDate>
-      
-      <guid>https://www.cirta.dev/tags/github-action/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>go doc</title>
       <link>https://www.cirta.dev/tags/go-doc/</link>
       <pubDate>Sun, 26 Apr 2020 13:05:51 +0300</pubDate>
@@ -126,6 +117,33 @@
       <pubDate>Sat, 25 Apr 2020 19:05:51 +0300</pubDate>
       
       <guid>https://www.cirta.dev/tags/mongodb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cat</title>
+      <link>https://www.cirta.dev/tags/cat/</link>
+      <pubDate>Tue, 30 Apr 2019 18:15:06 +0300</pubDate>
+      
+      <guid>https://www.cirta.dev/tags/cat/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>functional programming</title>
+      <link>https://www.cirta.dev/tags/functional-programming/</link>
+      <pubDate>Tue, 30 Apr 2019 18:15:06 +0300</pubDate>
+      
+      <guid>https://www.cirta.dev/tags/functional-programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>reader</title>
+      <link>https://www.cirta.dev/tags/reader/</link>
+      <pubDate>Tue, 30 Apr 2019 18:15:06 +0300</pubDate>
+      
+      <guid>https://www.cirta.dev/tags/reader/</guid>
       <description></description>
     </item>
     
