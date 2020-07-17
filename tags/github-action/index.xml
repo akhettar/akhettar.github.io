@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>2020 © Copyright Ayache khettar</copyright>
-    <lastBuildDate>Wed, 15 Jul 2020 08:46:48 +0300</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jul 2020 18:36:36 +0300</lastBuildDate>
     
 	<atom:link href="https://www.cirta.dev/tags/github-action/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Serverless Github Action Demo</title>
+      <link>https://www.cirta.dev/post/serverless-demo/</link>
+      <pubDate>Thu, 16 Jul 2020 18:36:36 +0300</pubDate>
+      
+      <guid>https://www.cirta.dev/post/serverless-demo/</guid>
+      <description>In this brief post, I am going to show you how to automatically deploy lambda function using serverless and Github Action. You can access the source code of this demo in Github.
+Why Serverless? Serverless is a cloud-agnostic framework which aims to facilitate the deployment of Lambda functions into the cloud. For AWS deployment, it uses AWS CloudFormation under the hood to deploy the stack into AWS. It supports many cloud providers such as AWS, GCP, Azure.</description>
+    </item>
     
     <item>
       <title>CI Pipeline generator</title>
