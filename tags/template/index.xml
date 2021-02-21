@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>template on Ayache Khettar</title>
+    <link>https://www.cirta.dev/tags/template/</link>
+    <description>Recent content in template on Ayache Khettar</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>2020 © Copyright Ayache khettar</copyright>
+    <lastBuildDate>Wed, 15 Jul 2020 08:46:48 +0300</lastBuildDate>
+    
+	<atom:link href="https://www.cirta.dev/tags/template/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CI Pipeline generator</title>
+      <link>https://www.cirta.dev/post/ci-templater/</link>
+      <pubDate>Wed, 15 Jul 2020 08:46:48 +0300</pubDate>
+      
+      <guid>https://www.cirta.dev/post/ci-templater/</guid>
+      <description>I recently wrote a ci templater tool - see source code in Github. This tool generate CI config for any given CI tool (Github Action, Circleci) from a given generic CI template. It ensures consistency of the CI template across all the deployments. This tool is particularly useful with microservices architectural style becoming the norm nowadays, whereby several microservices would share the same deployment pipeline. This tool allows us to generate ci config for all these services from a one given ci template.</description>
+    </item>
+    
+  </channel>
+</rss>
